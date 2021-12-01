@@ -1,0 +1,267 @@
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: cyan;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.dropbtn {
+    background-color: black;
+    color: cyan;
+    padding-right: -50px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: rgba(0,0,0,0.2);
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropbtn:hover {color: #818181}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.buttonMenu {
+    font-size:30px;
+    cursor:pointer;
+    position: fixed;
+    visibility: visible;
+}
+
+.buttonMenu:hover {
+    color: #818181;
+}
+
+
+
+.login {
+    position: fixed;
+    z-index: 2;
+    right: 10px;
+    top: 20px;
+    text-decoration: none;
+    cursor:pointer;
+
+}
+.login:hover {
+    color: #818181;
+}
+.container{
+    width: 65%;
+    margin: auto;
+    overflow: hidden;
+    background: #1f2833;
+    margin-top: 60px;
+    cursor:pointer;
+    border-style: solid;
+    border-color: darkcyan;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(100px, 1fr));
+    grid-gap: 20px;
+}
+.grid > article {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+}
+.grid > article img {
+    max-width: 100%;
+}
+.text {
+    padding: 0 20px 20px;
+}
+
+.text:hover {
+    opacity: 0.5;
+}
+.text > button {
+    background: gray;
+    border: 0;
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+.grid > article:nth-child(1) {
+    grid-column: span 2;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: darkcyan;
+}
+
+.text-center{
+    color:#c5c6c7;
+    text-transform:uppercase;
+    font-size: 28px;
+    margin: -50px 0 80px 0;
+    display: block;
+    text-align: center;
+}
+
+.prof {
+    margin-bottom:25px;
+    font-size:18px;
+    color:#c5c6c7;
+}
+.box{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0, 0, 0, 0.89);
+    width: 250px;
+    border-radius:3px;
+    padding:70px 20px;
+    border: 2px solid cyan;
+}
+.input-container{
+    position:relative;
+    margin-bottom:25px;
+}
+.input-container label{
+    position:absolute;
+    top:-5px;
+    left:0px;
+    font-size:18px;
+    color:#c5c6c7;
+    pointer-event:none;
+    transition: all 0.5s ease-in-out;
+}
+.input-container input{
+    border:0;
+    border-bottom:1px solid #555;
+    background:transparent;
+    width:100%;
+    padding:10px 0 7px 0;
+    font-size:14px;
+    color:#c5c6c7;
+}
+.input-container input:focus{
+    border:none;
+    outline:none;
+    background:transparent;
+    border-bottom:1px solid cyan;
+
+}
+.btn{
+    color:black;
+    background-color:cyan;
+    outline: none;
+    border: 0;
+    padding:10px 20px;
+    text-transform:uppercase;
+    margin-top:50px;
+    border-radius:2px;
+    cursor:pointer;
+    position:relative;
+    left: 50px;
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+    top:-12px;
+    font-size:12px;
+    background:transparent;
+}
+
+a:link {
+    color: #c5c6c7;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #c5c6c7;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: cyan;
+    background-color: transparent;
+}
+
+a:active {
+    color: #c5c6c7;
+    background-color: transparent;
+    text-decoration: underline;
+}
+.wrongInput {
+    position: absolute;
+    background-color: #1f2833;
+    border: 2px solid cyan;
+    font-size: 15px;
+    color: orangered;
+    display: inline-block;
+    text-align: center;
+    padding: 5px 7px;
+}
+
