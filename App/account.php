@@ -9,14 +9,18 @@ class account
     public static function login($username, $password) {
         $accounts=Acc::getAll();
         foreach ($accounts as $acc) {
-            if ($acc->getUsername() == $username && password_verify($password, $acc->getPassword()))
+            if ($acc->getUsername() == $username )
             {
-                $_SESSION['id'] = $acc->getID();
-                return true;
-            } else {
-                return false;
+                if (password_verify($password, $acc->getPassword())) {
+                    $_SESSION['id'] = $acc->getID();
+                    return true;
+                } else {
+                    return false;
+                }
+
             }
         }
+        return false;
 
     }
 

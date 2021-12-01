@@ -5,7 +5,9 @@ use App\Models\acc;
 
 $acc = $data['Acc'];?>
 
-<div class="box" style="top: 400px">
+
+
+<div class="box" id="form" style="top: 400px">
     <form method="post" id="modForm">
         <span class="text-center" >Zmeniť profil</span>
         <div class="prof" id="errors" style="color: goldenrod"></div>
@@ -23,8 +25,9 @@ $acc = $data['Acc'];?>
         <a class="text-center" href="?c=acc&a=pass" style="margin-top: 20%; border: 2px solid cyan;left: 1px;position: relative;padding: 7px;font-size: 15px">Zmeniť heslo</a>
 
     </form>
-    <a href="?c=acc&a=deleteAcc" onclick="return confirm('Are you sure?')" style="background-color:black;font-size: 14.5px ; color: red; padding: 10px 20px;left: 60px;position: relative;top: 10px">Zmazať účet</a>
+    <a href="?c=acc&a=deleteAcc" onclick="return confirm('Si is istý že chceš zmazať účet?')" style="background-color:black;font-size: 14.5px ; color: red; padding: 10px 20px;left: 60px;position: relative;top: 10px">Zmazať účet</a>
     <script>
+
         document.getElementById("modForm").onsubmit = checkForm;
 
         function checkForm() {
@@ -34,6 +37,7 @@ $acc = $data['Acc'];?>
                 document.getElementById('errors').appendChild(textNode);
                 return false;
             }
+            alert('Údaje boli zmenené.');
         }
     </script>
 </div>

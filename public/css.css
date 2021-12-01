@@ -182,6 +182,18 @@
     padding:70px 20px;
     border: 2px solid cyan;
 }
+
+.boxMessage{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0, 0, 0, 0.89);
+    width: 250px;
+    border-radius:3px;
+    padding:70px 20px;
+    border: 2px solid cyan;
+}
 .input-container{
     position:relative;
     margin-bottom:25px;

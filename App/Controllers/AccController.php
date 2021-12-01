@@ -62,7 +62,7 @@ class AccController extends AControllerRedirect
 
         $acc = acc::getOne($_SESSION['id']);
 
-        if (isset($_POST['username'])){
+        if (isset($_POST['password'])){
             $acc->setPassword(password_hash($_POST['password'], PASSWORD_DEFAULT));
             $acc->save();
 
@@ -107,8 +107,8 @@ class AccController extends AControllerRedirect
                 }
             }
             if($ok == 1) {
-                $password = password_hash($password, PASSWORD_DEFAULT);
-                $account = new Acc($username, $email, $password);
+                $pass = password_hash($password, PASSWORD_DEFAULT);
+                $account = new Acc($username, $email, $pass);
                 $account->save();
 
                 $this->redirect('acc','log');

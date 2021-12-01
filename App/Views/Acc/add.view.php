@@ -17,6 +17,10 @@
             <input type="password" required name="password"/>
             <label>Heslo (min 8 znakov)</label>
         </div>
+        <div class="input-container">
+            <input type="password" required name="passwordSubmit"/>
+            <label>Potvrdiť Heslo</label>
+        </div>
         <?php
         if ($data['error'] != ""){
         ?>
@@ -35,11 +39,13 @@
 
     </form>
     <script>
+
         document.getElementById("regForm").onsubmit = checkForm;
 
         function checkForm() {
             let name = document.getElementsByName("username")[0];
             let pass = document.getElementsByName("password")[0];
+            let passS = document.getElementsByName("passwordSubmit")[0];
             if (name.value.length < 5 ) {
                 let textNode = document.createTextNode("Meno musí mať aspon 5 znakov!");
                 document.getElementById('errors').appendChild(textNode);
@@ -50,6 +56,12 @@
                 document.getElementById('errors').appendChild(textNode);
                 return false;
             }
+            if (pass.value == passS.value) {
+                let textNode = document.createTextNode("Heslá sa musia zhodovať!");
+                document.getElementById('errors').appendChild(textNode);
+                return false;
+            }
+            alert('Účet úspešne vytvorený.');
         }
     </script>
 

@@ -6,13 +6,9 @@ use App\Models\acc;
 $acc = $data['Acc'];?>
 
 <div class="box" style="top: 400px">
-    <form method="post" id="passForm">
+    <form method="post" id="passForm" >
         <span class="text-center" >Zmeniť heslo</span>
         <div class="prof" id="errors" style="color: goldenrod"></div>
-        <div class="input-container">
-            <input type="text" required name="username" value="<?=$acc->getUsername()?>"/>
-            <label>Prihlasovacie meno</label>
-        </div>
         <div class="input-container">
             <input type="password" required name="password" value=""/>
             <label>Nové heslo</label>
@@ -27,9 +23,12 @@ $acc = $data['Acc'];?>
     </form>
     <a href="?c=acc&a=deleteAcc" onclick="return confirm('Are you sure?')" style="background-color:black;font-size: 14.5px ; color: red; padding: 10px 20px;left: 60px;position: relative;top: 10px">Zmazať účet</a>
     <script>
+
         document.getElementById("passForm").onsubmit = checkForm;
 
         function checkForm() {
+
+
             let pass = document.getElementsByName("password")[0];
             let passNew = document.getElementsByName("passwordNew")[0];
             if (pass.value.length < 8 ) {
@@ -42,6 +41,8 @@ $acc = $data['Acc'];?>
                 document.getElementById('errors').appendChild(textNode);
                 return false;
             }
+            alert('Heslo bolo zmenené.');
         }
+
     </script>
 </div>
