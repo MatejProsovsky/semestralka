@@ -56,7 +56,7 @@
                 document.getElementById('errors').appendChild(textNode);
                 return false;
             }
-            if (pass.value == passS.value) {
+            if (pass.value != passS.value) {
                 let textNode = document.createTextNode("Heslá sa musia zhodovať!");
                 document.getElementById('errors').appendChild(textNode);
                 return false;
