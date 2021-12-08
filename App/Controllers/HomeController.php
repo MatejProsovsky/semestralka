@@ -12,6 +12,7 @@ class HomeController extends AControllerRedirect
 
     public function index()
     {
+        $articles = \final_articles::getAll();
         return $this->html(
             []
         );
