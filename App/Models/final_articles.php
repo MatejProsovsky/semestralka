@@ -18,10 +18,9 @@ class final_articles extends Model
     protected ?string $section_4;
     protected ?string $section_5;
     protected ?string $source;
-    protected array $sections;
+    protected ?string $division;
 
     /**
-     * @param $ID
      * @param $ID_user
      * @param string|null $title
      * @param string|null $image
@@ -33,9 +32,8 @@ class final_articles extends Model
      * @param string|null $section_5
      * @param string|null $source
      */
-    public function __construct($ID, $ID_user, ?string $title, ?string $image, ?string $summary, ?string $section_1, ?string $section_2, ?string $section_3, ?string $section_4, ?string $section_5, ?string $source)
+    public function __construct($ID_user= null, ?string $title = null,?string $summary= null,?string $section_1= null,  ?string $source= null, ?string $image= null, ?string $section_2 = null, ?string $section_3 = null, ?string $section_4 = null, ?string $section_5 = null,?string $division = null)
     {
-        $this->ID = $ID;
         $this->ID_user = $ID_user;
         $this->title = $title;
         $this->image = $image;
@@ -46,29 +44,8 @@ class final_articles extends Model
         $this->section_4 = $section_4;
         $this->section_5 = $section_5;
         $this->source = $source;
-        $sections = array( s1 => $this->section_1 ,
-            s2 => $this->section_2 ,
-            s3 => $this->section_3 ,
-            s4 => $this->section_4 ,
-            s5 => $this->section_5 ,);
+        $this->division = $division;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getID()
-    {
-        return $this->ID;
-    }
-
-    /**
-     * @param mixed $ID
-     */
-    public function setID($ID): void
-    {
-        $this->ID = $ID;
-    }
-
     /**
      * @return mixed
      */
@@ -229,32 +206,48 @@ class final_articles extends Model
         $this->source = $source;
     }
 
-    /**
-     * @return array
-     */
-    public function getSections(): array
-    {
-        return $this->sections;
-    }
-
-    /**
-     * @param array $sections
-     */
-    public function setSections(array $sections): void
-    {
-        $this->sections = $sections;
-    }
-
 
     static public function setDbColumns()
     {
         return ['ID','ID_user', 'title', 'image', 'summary','section_1','section_2',
-            'section_3','section_4','section_5','source'];
+            'section_3','section_4','section_5','source','division'];
     }
 
     static public function setTableName()
     {
         return 'final_articles';
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDivision(): ?string
+    {
+        return $this->division;
+    }
+
+    /**
+     * @param string|null $division
+     */
+    public function setDivision(?string $division): void
+    {
+        $this->division = $division;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getID()
+    {
+        return $this->ID;
+    }
+
+    /**
+     * @param mixed $ID
+     */
+    public function setID($ID): void
+    {
+        $this->ID = $ID;
     }
 }
 

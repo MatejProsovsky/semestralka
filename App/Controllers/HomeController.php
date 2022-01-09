@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Controllers;
-
+use \App\Models\final_articles;
+use \App\Models\articles;
 /**
  * Class HomeController
  * Example of simple controller
@@ -12,9 +13,9 @@ class HomeController extends AControllerRedirect
 
     public function index()
     {
-        $articles = \final_articles::getAll();
+        $articles = final_articles::getAll();
         return $this->html(
-            []
+            [ 'articles' => $articles ]
         );
     }
 
@@ -22,6 +23,24 @@ class HomeController extends AControllerRedirect
     {
         return $this->html(
             []
+        );
+    }
+
+    public function article()
+    {
+        $article = final_articles::getOne($this->request()->getValue('id'));
+
+        return $this->html(
+            ['article' => $article]
+        );
+    }
+
+    public function myArticle()
+    {
+        $article = articles::getOne($this->request()->getValue('id'));
+
+        return $this->html(
+            ['article' => $article]
         );
     }
 

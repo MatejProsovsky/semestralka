@@ -22,19 +22,23 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="?c=home">Domov</a>
     <a href="#">Procesory</a>
-    <a href="#">Maticne Dosky</a>
-    <a href="#">Pamate</a>
-    <a href="#">Graficke Karty</a>
-    <a href="#">Smartphony</a>
+    <a href="#">Matičné Dosky</a>
+    <a href="#">Pamäte</a>
+    <a href="#">Grafické Karty</a>
+    <a href="#">Smartphóny</a>
     <a href="#">Software</a>
     <a href="#">TV</a>
+    <a href="#">Notebooky</a>
     <a href="#">Ine</a>
 </div>
 
-<div style="background-color: black;width: 100%;height: 50px;position: fixed;top: 0px">
+<div style="background-color: black;width: 100%;height: 50px;position: fixed;top: 0px;z-index: 10">
     <span class = "buttonMenu" style="top:5px" onclick="openNav()">&#9776; TechNews</span>
 
     <?php
+
+    use App\Models\acc;
+
     if (\App\account::isLogged()) {
         ?>
         <div class="login" style="background-color:rgba(0, 0, 0, 0.5);">
@@ -42,6 +46,19 @@
                 <a class="dropbtn"><i class='fas'>&#xf406;   <?php echo \App\account::getName()?></i></a>
                 <div class="dropdown-content">
                     <a href="?c=acc&a=pro">Profil</a>
+
+                    <a href="?c=articles&a=add">Pridať článok</a>
+                    <?php
+                    $acc = acc::getOne($_SESSION['id']);
+                    if ($acc->getUsername() == 'admin' ) { ?>
+                        <a href="?c=articles&a=myArticles">Všetky články</a>
+                    <?php
+                    } else {
+                    ?>
+                        <a href="?c=articles&a=myArticles">Moje články</a>
+                    <?php
+                    }
+                    ?>
                     <a href="?c=acc&a=logout">Odhlásiť</a>
                 </div>
             </div>
@@ -61,9 +78,6 @@
 
 
 </div>
-
-
-
 
 
 <div class="row mt-2">
