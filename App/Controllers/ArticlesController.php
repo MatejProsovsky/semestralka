@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use \App\Models\final_articles;
 use \App\Models\articles;
+use \App\Models\comment;
 
 class ArticlesController extends AControllerRedirect
 {
@@ -23,8 +24,18 @@ class ArticlesController extends AControllerRedirect
         $article = articles::getOne($this->request()->getValue('id'));
         $final_articles = final_articles::getAll();
         foreach ($final_articles as $final) {
-            if ($final->getTitle() == $article->getTitle()) {
-                $final->delete();
+            if ($final->getTitle() == $article->getTitle() && isset($_POST['title'])) {
+                $final->setTitle($_POST['title']);
+                $final->setSummary($_POST['summary']);
+                $final->setSection1($_POST['section_1']);
+                $final->setSection2($_POST['section_2']);
+                $final->setSection3($_POST['section_3']);
+                $final->setSection4($_POST['section_4']);
+                $final->setSection5($_POST['section_5']);
+                $final->setSource($_POST['source']);
+                $final->setImage($_POST['image']);
+                $final->setDivision($_POST['division']);
+                $final->save();
             }
         }
         if (isset($_POST['title'])){
@@ -39,14 +50,30 @@ class ArticlesController extends AControllerRedirect
             $article->setImage($_POST['image']);
             $article->setDivision($_POST['division']);
             $article->save();
-
         }
-
-        $finalArticle = new final_articles($article->getIDUser(), $article->getTitle(),$article->getSummary(), $article->getSection1(), $article->getSource(),
-            $article->getImage(), $article->getSection2() ,$article->getSection3(),$article->getSection4(),$article->getSection5() ,$article->getDivision());
         $article->setIsPublished(1);
-        $article->save();
-        $finalArticle->save();
+
+        return $this->html([
+            'Article' => $article
+        ]);
+    }
+
+    public function modifyFinalArticle() {
+
+        $article = final_articles::getOne($this->request()->getValue('id'));
+        if (isset($_POST['title'])){
+            $article->setTitle($_POST['title']);
+            $article->setSummary($_POST['summary']);
+            $article->setSection1($_POST['section_1']);
+            $article->setSection2($_POST['section_2']);
+            $article->setSection3($_POST['section_3']);
+            $article->setSection4($_POST['section_4']);
+            $article->setSection5($_POST['section_5']);
+            $article->setSource($_POST['source']);
+            $article->setImage($_POST['image']);
+            $article->setDivision($_POST['division']);
+            $article->save();
+        }
 
         return $this->html([
             'Article' => $article
@@ -56,6 +83,19 @@ class ArticlesController extends AControllerRedirect
 
     public function deleteArticle(){
         $article = articles::getOne($this->request()->getValue('id'));
+        $article->delete();
+        $this->redirect('articles','myArticles');
+
+    }
+
+    public function deleteFinalArticle(){
+        $comments = comment::getAll();
+        foreach ($comments as $comment) {
+            if ($comment->getIDFinalArticle() == $this->request()->getValue('id')) {
+                $comment->delete();
+            }
+        }
+        $article = final_articles::getOne($this->request()->getValue('id'));
         $article->delete();
         $this->redirect('home');
 
@@ -126,7 +166,7 @@ class ArticlesController extends AControllerRedirect
             }
             $article=new articles($ID_user, $title,$summary, $section_1, $source, $image, $section_2 ,$section_3,$section_4,$section_5 ,$division);
             $article->save();
-            $this->redirect('home');
+            $this->redirect('articles','myArticles');
         }
     }
 }

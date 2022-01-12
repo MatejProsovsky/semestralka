@@ -7,7 +7,7 @@ use App\Models\acc; ?>
     <main class="grid">
         <?php foreach ($data['articles'] as $article) { ?>
             <article>
-                <a href="?c=home&a=article&id=<?= $article->getID() ?>" style="text-decoration: none;color: cyan">
+                <a href="?c=home&a=article&id=<?= $article->getID() ?>&comment=0" style="text-decoration: none;color: cyan">
                     <img src="<?= $article->getImage() ?>" alt="Sample photo">
                     <div class="text">
                         <h3><?= $article->getTitle() ?></h3>
@@ -21,6 +21,7 @@ use App\Models\acc; ?>
                             <a href="?c=articles&a=modifyArticle&id=<?= $article->getID() ?>" style="color: orange">Upraviť</a>
                 <?php   }
                       }*/?>
+                <a href="?c=articles&a=modifyFinalArticle&id=<?= $article->getID() ?>" style="position: relative; left: 15px" >Upraviť</a>
             </article>
         <?php } ?>
     </main>

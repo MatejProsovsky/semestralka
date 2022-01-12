@@ -40,12 +40,15 @@
     </form>
     <script>
 
-        document.getElementById("regForm").onsubmit = checkForm;
+        document.getElementById("regForm").onsubmit = checkForm
 
         function checkForm() {
             let name = document.getElementsByName("username")[0];
             let pass = document.getElementsByName("password")[0];
             let passS = document.getElementsByName("passwordSubmit")[0];
+            if (document.getElementById('errors').hasChildNodes()) {
+                document.getElementById('errors').removeChild(document.getElementById('errors').lastChild);
+            }
             if (name.value.length < 5 ) {
                 let textNode = document.createTextNode("Meno musí mať aspon 5 znakov!");
                 document.getElementById('errors').appendChild(textNode);

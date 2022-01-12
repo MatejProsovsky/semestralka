@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use \App\Models\comment;
 use \App\Models\final_articles;
 use \App\Models\articles;
@@ -20,19 +21,13 @@ class HomeController extends AControllerRedirect
         );
     }
 
-    public function art1()
-    {
-        return $this->html(
-            []
-        );
-    }
-
     public function article()
     {
         $article = final_articles::getOne($this->request()->getValue('id'));
+        $comment = $this->request()->getValue('comment');
         $comments = comment::getAll();
         return $this->html(
-            ['article' => $article, 'comments' => $comments]
+            ['article' => $article, 'comments' => $comments, 'comment' => $comment]
         );
     }
 
@@ -45,18 +40,5 @@ class HomeController extends AControllerRedirect
         );
     }
 
-    public function art2()
-    {
-        return $this->html(
-            []
-        );
-    }
-
-    public function contact()
-    {
-        return $this->html(
-            []
-        );
-    }
 
 }

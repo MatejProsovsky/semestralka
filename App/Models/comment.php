@@ -19,7 +19,7 @@ class comment extends Model
      * @param string|null $content
      * @param string|null $date
      */
-    public function __construct($ID_final_article= null,?string $username= null,?string $content= null,?string $date= null)
+    public function __construct( $ID_final_article= null,?string $username= null,?string $content= null,?string $date= null)
     {
         $this->ID_final_article = $ID_final_article;
         $this->username = $username;

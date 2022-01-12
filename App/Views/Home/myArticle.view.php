@@ -22,7 +22,7 @@ use App\Models\acc;
             <?php
             if(isset($_SESSION['id'])) {
                 $acc = acc::getOne($_SESSION['id']);
-                if ($acc->getUsername() == 'admin' || $_SESSION['id'] == $article->getUserId()) { ?>
+                if ($acc->getUsername() == 'admin' || $_SESSION['id'] == $article->getIdUser()) { ?>
                     <a href="?c=articles&a=modifyArticle&id=<?= $article->getID() ?>" style="position: relative;font-size: 18px; outline: 4px inset orange;outline-offset: 2px;">Upraviť</a>
                 <?php   }
             }?>

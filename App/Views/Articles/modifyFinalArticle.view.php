@@ -1,13 +1,13 @@
 <?php /** @var Array $data */
-/** @var \App\Models\articles $article */
+/** @var \App\Models\final_articles $article */
 
-use App\Models\articles;
+use App\Models\final_articles;
 $article = $data['Article'];
 ?>
 
 <div class="box" style="top: 650px;width: 50vw;z-index: 0" >
 
-    <form method="post" action="?c=articles&a=modifyArticle&id=<?= $article->getID() ?>" id="regForm">
+    <form method="post" action="?c=articles&a=modifyFinalArticle&id=<?= $article->getID() ?>" id="regForm">
         <div class="prof" id="errors" style="color: goldenrod"></div>
         <div class="input-container">
             <input type="text"  required name="title" value="<?=$article->getTitle()?>"/>
@@ -64,7 +64,7 @@ $article = $data['Article'];
 
 
     </form>
-    <a href="?c=articles&a=deleteArticle&id=<?= $article->getID() ?>" onclick="return confirm('Si is istý že chceš zmazať článok?')" style="background-color:black;font-size: 14.5px ; color: red; padding: 10px 20px;left: 15px;position: relative;top: 10px">Zmazať článok</a>
+    <a href="?c=articles&a=deleteFinalArticle&id=<?= $article->getID() ?>" onclick="return confirm('Si is istý že chceš zmazať článok?')" style="background-color:black;font-size: 14.5px ; color: red; padding: 10px 20px;left: 15px;position: relative;top: 10px">Zmazať článok</a>
     <script>
 
         document.getElementById("regForm").onsubmit = checkForm;

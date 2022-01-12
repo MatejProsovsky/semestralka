@@ -14,7 +14,10 @@ use App\Models\acc; ?>
 
 <div class="container">
     <main class="grid">
-        <?php foreach ($data['articles'] as $article) { ?>
+        <?php foreach ($data['articles'] as $article) {
+            if ($article->getIdUser() != $acc->getID() && $acc->getUsername() != 'admin') {
+                continue;
+            }?>
             <article>
                 <a href="?c=home&a=myArticle&id=<?= $article->getID() ?>" style="text-decoration: none;color: cyan">
                     <img src="<?= $article->getImage() ?>" alt="Sample photo">
@@ -30,6 +33,16 @@ use App\Models\acc; ?>
                             <a href="?c=articles&a=publish&id=<?= $article->getID() ?>" style="position: relative; left: 10px">Zverejniť</a>
                     <?php  } ?>
                     <a href="?c=articles&a=modifyArticle&id=<?= $article->getID() ?>" style="position: relative; left: 15px" >Upraviť</a>
+                <?php if ($acc->getUsername() == 'admin') {
+                        $id = $article->getIdUser();
+                        $accs = acc::getAll();
+                        foreach ($accs as $ac) {
+                            if($ac->getID() == $id) {
+                                $account = acc::getOne($id);
+                            }
+                        }?>
+                    <p  style="position: relative; left: 10px">Pridal <?=  $account->getUsername()?></p>
+                  <?php  } ?>
             </article>
                 <?php } ?>
         <?php } ?>
