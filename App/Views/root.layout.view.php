@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="../../public/css.css"/>
     <meta charset="UTF-8">
     <title>TechNews</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,35 +16,12 @@
         }
 
     </style>
-    <script type="text/javascript">
-        $(document).on('click', 'a', function(event)
-        {
-            // Make sure this.hash has a value before overriding default behavior
-            if (this.hash !== "") {
-                // Prevent default anchor click behavior
-                event.preventDefault();
 
-                // Store hash
-                var hash = this.hash;
-
-                // Using jQuery's animate() method to add smooth page scroll
-                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-                $('.page-content').animate({
-                    scrollTop: $(hash).offset().top-50
-                }, 800, function(){
-
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
-                });
-            } // End if
-        });
-    </script>
 
 </head>
-<body onload="menuButton(); scroll(100)" onresize="menuButton()">
+<body onload="menuButton()" onresize="menuButton()">
 
 <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="?c=home">Domov</a>
     <a href="#">Procesory</a>
     <a href="#">Matičné Dosky</a>
@@ -53,12 +31,22 @@
     <a href="#">Software</a>
     <a href="#">TV</a>
     <a href="#">Notebooky</a>
-    <a href="#">Ine</a>
+    <a href="#">Iné</a>
+
 </div>
 
 <div style="background-color: black;width: 100%;height: 50px;position: fixed;top: 0px;z-index: 10">
-    <span class = "buttonMenu" style="top:5px" onclick="openNav()">&#9776; TechNews</span>
+    <span class = "buttonMenu" style="top:5px" onclick="if (sidenav == 0) {openNav()} else {closeNav()} ">&#9776; TechNews</span>
 
+    <div class="dropdown" style="left: 150px;top: 17px;float: left">
+        <a class="dropbtn"><i class='fas fa-search' id="fas"></i></a>
+        <div class="dropdown-contentsearch" id="search">
+            <form action="" style="position:relative;top: 5px;font-size: 20px" >
+                <input class="inputSearch" style="color: #cccccc;background-color: #111111;box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);font-size: 18px" type="text" onkeyup="showResult(this.value)">
+            </form>
+            <div id="livesearch"></div>
+        </div>
+    </div>
     <?php
 
     use App\Models\acc;
@@ -67,8 +55,8 @@
         ?>
         <div class="login" style="background-color:rgba(0, 0, 0, 0.5);">
             <div class="dropdown" style="float:right;">
-                <a class="dropbtn"><i class='fas'>&#xf406;   <?php echo \App\account::getName()?></i></a>
-                <div class="dropdown-content">
+                <a class="dropbtn"><i class='fas' id="fas">&#xf406;   <?php echo \App\account::getName()?></i></a>
+                <div class="dropdown-content" >
                     <a href="?c=acc&a=pro">Profil</a>
 
                     <a href="?c=articles&a=add">Pridať článok</a>
@@ -93,13 +81,12 @@
         ?>
         <div class="login" style="background-color:rgba(0, 0, 0, 0.5);">
             <a href="?c=acc&a=log">
-                <i class='fas'>&#xf406;</i> Prihlásiť
+                <i class='fas' id="fas">&#xf406; </i>Prihlásiť
             </a>
         </div>
         <?php
     }
     ?>
-
 
 </div>
 

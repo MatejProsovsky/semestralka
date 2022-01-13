@@ -14,7 +14,7 @@
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -26,8 +26,8 @@
 
 .sidenav .closebtn {
     position: absolute;
-    top: 0;
-    right: 25px;
+    top: 38px;
+    right: 6px;
     font-size: 36px;
     margin-left: 50px;
 }
@@ -61,18 +61,40 @@
     z-index: 1;
 }
 
+.dropdown-contentsearch {
+    display: none;
+    position: fixed;
+    right: 0;
+    background-color: #111111;
+    min-width: 80px;
+    box-shadow: rgba(0,0,0,1);
+    z-index: 1;
+    width: auto;
+    left: 155px;
+}
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
+
+.dropdown-contentsearch a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
 .dropbtn:hover {color: #818181}
 
 .dropdown:hover .dropdown-content {display: block;}
 
+.dropdown:hover .dropdown-contentsearch {display: block;}
+
 .buttonMenu {
-    font-size:30px;
+    font-size:25px;
     cursor:pointer;
     position: fixed;
     visibility: visible;
@@ -277,3 +299,5 @@ a:active {
     padding: 5px 7px;
 }
 
+.fas {
+}

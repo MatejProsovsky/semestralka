@@ -50,7 +50,9 @@ class App
         // call appropriate method of the controller class
         $response =  call_user_func([$this->router->getController(), $this->router->getAction()]);
 
-        $response->generate();
+        if($this->router->getAction() != "findArticle") {
+            $response->generate();
+        }
 
         // if SQL debugging in configuration is allowed, display all SQL queries
         if (Configuration::DEBUG_QUERY) {

@@ -169,6 +169,37 @@ class ArticlesController extends AControllerRedirect
             $this->redirect('articles','myArticles');
         }
     }
+
+    public function findArticle() {
+
+        $articles=final_articles::getAll();
+
+        $wanted=$this->request()->getValue('res');
+        $hint="";
+        if (strlen($wanted)>0) {
+            $hint="";
+            foreach ($articles as $article) {
+                if(stristr($article->getTitle(),$wanted)) {
+                    if($hint == "") {
+                        $hint="<a href=?c=home&a=article&id=" .  $article->getID() . "&comment=0" ."' target='_blank'>" . $article->getTitle() . "</a>";
+                    } else {
+                        $hint=$hint . "<br /><a href=?c=home&a=article&id=" .  $article->getID() . "&comment=0" ."' target='_blank'>" . $article->getTitle() . "</a>";
+                    }
+                }
+            }
+
+        }
+
+        if ($hint=="") {
+            $response="žiadne výsledky";
+        } else {
+            $response=$hint;
+        }
+
+        echo $response;
+
+        return 0;
+    }
 }
 
 
