@@ -50,7 +50,7 @@ class App
         // call appropriate method of the controller class
         $response =  call_user_func([$this->router->getController(), $this->router->getAction()]);
 
-        if($this->router->getAction() != "findArticle") {
+        if($this->router->getAction() != "findArticle" && $this->router->getAction() !=  "findAccount") {
             $response->generate();
         }
 

@@ -7,6 +7,8 @@ $article = $data['Article'];
 
 <div class="box" style="top: 650px;width: 50vw;z-index: 0" >
 
+    <a href="?c=home&a=myArticle&id=<?= $article->getID() ?>" style="background-color:black;font-size: 18px ;left: 1px;position: relative;top: -10px">Spať na článok</a>
+
     <form method="post" action="?c=articles&a=modifyArticle&id=<?= $article->getID() ?>" id="regForm">
         <div class="prof" id="errors" style="color: goldenrod"></div>
         <div class="input-container">
@@ -42,7 +44,7 @@ $article = $data['Article'];
             <label style="top: -23px">5. odsek </label>
         </div>
         <div class="input-container">
-            <input type="text"  required name="source" value="<?=$article->getDivision()?>"/>
+            <input type="text"  required name="source" value="<?=$article->getSource()?>"/>
             <label>Zdroj (povinné)</label>
         </div>
         <div class="input-container" style="top: 10px">
@@ -54,7 +56,7 @@ $article = $data['Article'];
                 <option value="Grafické karty" <?php if($article->getDivision() == 'Grafické karty') { ?> selected <?php }?>>Grafické karty</option>
                 <option value="Smartphóny" <?php if($article->getDivision() == 'Smartphóny') { ?> selected <?php }?>>Smartphóny</option>
                 <option value="Software" <?php if($article->getDivision() == 'Software') { ?> selected <?php }?>>Software</option>
-                <option value="TV" <?php if($article->getDivision() == 'TV') { ?> selected <?php }?>>TV</option>
+                <option value="TV" <?php if($article->getDivision() == 'TV a Monitory') { ?> selected <?php }?>>TV a Monitory</option>
                 <option value="Notebooky" <?php if($article->getDivision() == 'Notebooky') { ?> selected <?php }?>>Notebooky</option>
                 <option value="Iné" <?php if($article->getDivision() == 'Iné') { ?> selected <?php }?>>Iné</option>
             </select>

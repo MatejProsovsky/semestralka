@@ -29,15 +29,6 @@ use App\Models\acc;
 
         </div>
 
-        <div style="background-color: darkcyan;width: 100%;height: 5px;top: 20px"></div>
         <div style="width: 100%;height: 20px;top: 5px"></div>
-        <h1 style="margin-left: 2vw">Komentáre</h1>
-
-        <!--komentar-->
-        <div style="border-color: darkcyan;border-style: solid;width:auto;margin-right: 2vw;margin-left: 2vw;display: block;height: auto">
-            <h3 style="margin-left: 2vw;"> Matej Prosovky </h3>
-            <div style ="background-color: cyan;width:auto;display: block;height: 2px"></div>
-            <p style="color: whitesmoke;margin-left: 2vw">Nejaky komentar .....</p>
-        </div>
     </main>
 </div>

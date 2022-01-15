@@ -25,8 +25,8 @@ $comm = $data['comment'];
             <?php
             if(isset($_SESSION['id'])) {
                 $acc = acc::getOne($_SESSION['id']);
-                if ($acc->getUsername() == 'admin' || $_SESSION['id'] == $article->getUserId()) { ?>
-                    <a href="?c=articles&a=modifyFinalArticle&id=<?= $article->getID() ?>" style="position: relative;font-size: 18px; outline: 4px inset orange;outline-offset: 2px;">Upraviť</a>
+                if ($acc->getUsername() == 'admin' || $_SESSION['id'] == $article->getIDUser()) { ?>
+                    <a href="?c=articles&a=modifyFinalArticle&id=<?= $article->getID() ?>" style="position: relative;top: -5px;font-size: 18px; outline: 4px inset orange;outline-offset: 2px;">Upraviť</a>
                 <?php   }
             }?>
         </div>
@@ -36,7 +36,7 @@ $comm = $data['comment'];
         <h1 style="margin-left: 2vw">Komentáre</h1>
         <?php if (isset($_SESSION['id'])) { ?>
                 <form method="post" action="?c=comment&a=addComment&id=<?= $article->getID() ?>" id="comForm">
-                    <textarea type="text" style="position:relative; left: 2vw; background-color: black; color: #cccccc;width: 50vw;align-content: center" required name="content" rows="3">Pridať komentár</textarea>
+                    <textarea type="text" style="position:relative; left: 2vw; background-color: black; color: #cccccc;width: 50vw;align-content: center" required name="content" rows="3" onfocus="this.value=''">Pridať komentár</textarea>
                     <button type="submit" style="position: relative;left: 2vw;top: -20px;color: cyan;background-color: black;height: 40px;width: 100px;font-size: 15px;cursor: pointer">Komentovať</button>
                 </form>
         <?php } else { ?>
@@ -45,7 +45,7 @@ $comm = $data['comment'];
                  <div style="background-color: #1f2833;width: 100%;height: 15px;top: 20px"></div>
         <?php } ?>
 
-        <!--komentar-->
+        <!--komentare-->
         <?php foreach($comments as $comment) {
                 if($comment->getIDFinalArticle() == $article->getID()) {
                     if ($comm == $comment->getID()) { ?>
@@ -69,7 +69,7 @@ $comm = $data['comment'];
                      if (isset($_SESSION['id'])) {
                             $acc = acc::getOne($_SESSION['id']);
                             if ($acc->getUsername() == "admin" || $acc->getUsername() == $comment->getUsername()) {?>
-                                <a onclick="setScrollPosition(window.scrollY)" style="margin-left: 2vw;" href="?c=home&a=article&id=<?= $article->getID() ?>&comment=<?=$comment->getID() ?>">Upraviť komentár</a>
+                                <a style="margin-left: 2vw;" href="?c=home&a=article&id=<?= $article->getID() ?>&comment=<?=$comment->getID() ?>">Upraviť komentár</a>
                                 <a style="margin-left: 2vw;" href="?c=comment&a=deleteComment&id=<?= $comment->getID() ?>" onclick="return confirm('Si is istý že chceš zmazať komentár?')">Zmazať komentár</a>
                             <?php } else { ?>
                                 <a style="margin-left: 2vw;" href="#">&nbsp;</a>

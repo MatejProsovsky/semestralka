@@ -205,19 +205,6 @@ class final_articles extends Model
     {
         $this->source = $source;
     }
-
-
-    static public function setDbColumns()
-    {
-        return ['ID','ID_user', 'title', 'image', 'summary','section_1','section_2',
-            'section_3','section_4','section_5','source','division'];
-    }
-
-    static public function setTableName()
-    {
-        return 'final_articles';
-    }
-
     /**
      * @return string|null
      */
@@ -249,5 +236,18 @@ class final_articles extends Model
     {
         $this->ID = $ID;
     }
+
+    static public function setDbColumns()
+    {
+        return ['ID','ID_user', 'title', 'image', 'summary','section_1','section_2',
+            'section_3','section_4','section_5','source','division'];
+    }
+
+    static public function setTableName()
+    {
+        return 'final_articles';
+    }
+
+
 }
 

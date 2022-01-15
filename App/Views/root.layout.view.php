@@ -22,16 +22,16 @@
 <body onload="menuButton()" onresize="menuButton()">
 
 <div id="mySidenav" class="sidenav">
-    <a href="?c=home">Domov</a>
-    <a href="#">Procesory</a>
-    <a href="#">Matičné Dosky</a>
-    <a href="#">Pamäte</a>
-    <a href="#">Grafické Karty</a>
-    <a href="#">Smartphóny</a>
-    <a href="#">Software</a>
-    <a href="#">TV</a>
-    <a href="#">Notebooky</a>
-    <a href="#">Iné</a>
+    <a href="?c=home&division=home">Domov</a>
+    <a href="?c=home&division=Procesory">Procesory</a>
+    <a href="?c=home&division=Matičné dosky">Matičné Dosky</a>
+    <a href="?c=home&division=Pamäte">Pamäte</a>
+    <a href="?c=home&division=Grafické karty">Grafické Karty</a>
+    <a href="?c=home&division=Smartphóny">Smartphóny</a>
+    <a href="?c=home&division=Software">Software</a>
+    <a href="?c=home&division=TV a Monitory">TV a Monitory</a>
+    <a href="?c=home&division=Notebooky">Notebooky</a>
+    <a href="?c=home&division=Iné">Iné</a>
 
 </div>
 
@@ -42,7 +42,7 @@
         <a class="dropbtn"><i class='fas fa-search' id="fas"></i></a>
         <div class="dropdown-contentsearch" id="search">
             <form action="" style="position:relative;top: 5px;font-size: 20px" >
-                <input class="inputSearch" style="color: #cccccc;background-color: #111111;box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);font-size: 18px" type="text" onkeyup="showResult(this.value)">
+                <input class="inputSearch" style="color: #cccccc;background-color: #111111;box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);font-size: 18px" type="text" on onkeyup="showResult(this.value)">
             </form>
             <div id="livesearch"></div>
         </div>
@@ -64,6 +64,7 @@
                     $acc = acc::getOne($_SESSION['id']);
                     if ($acc->getUsername() == 'admin' ) { ?>
                         <a href="?c=articles&a=myArticles">Všetky články</a>
+                        <a href="?c=acc&a=allAccounts">Všetky účty</a>
                     <?php
                     } else {
                     ?>

@@ -15,7 +15,7 @@ use App\Models\acc; ?>
 <div class="container">
     <main class="grid">
         <?php foreach ($data['articles'] as $article) {
-            if ($article->getIdUser() != $acc->getID() && $acc->getUsername() != 'admin') {
+            if ($article->getIDUser() != $acc->getID() && $acc->getUsername() != 'admin') {
                 continue;
             }?>
             <article>

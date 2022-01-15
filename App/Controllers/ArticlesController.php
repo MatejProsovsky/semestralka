@@ -51,7 +51,7 @@ class ArticlesController extends AControllerRedirect
             $article->setDivision($_POST['division']);
             $article->save();
         }
-        $article->setIsPublished(1);
+
 
         return $this->html([
             'Article' => $article
@@ -106,7 +106,7 @@ class ArticlesController extends AControllerRedirect
         $finalArticles = final_articles::getAll();
         $publish = true;
         foreach($finalArticles as $art) {
-            if ($article->getID() == $art->getID()) {
+            if ($article->getTitle() == $art->getTitle()) {
                 $this->redirect('articles','myArticles',['error' => 'Článok už je publikovaný.']);
                 $publish = false;
             }
@@ -164,7 +164,7 @@ class ArticlesController extends AControllerRedirect
             } else {
                 $image='';
             }
-            $article=new articles($ID_user, $title,$summary, $section_1, $source, $image, $section_2 ,$section_3,$section_4,$section_5 ,$division);
+            $article=new articles($ID_user, $title,$summary, $section_1, $source, $image, $section_2 ,$section_3,$section_4,$section_5 ,$division, 0);
             $article->save();
             $this->redirect('articles','myArticles');
         }

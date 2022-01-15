@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use \App\Models\comment;
 use \App\Models\acc;
+use App\Models\final_articles;
 
 class CommentController extends AControllerRedirect
 {

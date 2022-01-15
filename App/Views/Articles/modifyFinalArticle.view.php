@@ -54,7 +54,7 @@ $article = $data['Article'];
                 <option value="Grafické karty" <?php if($article->getDivision() == 'Grafické karty') { ?> selected <?php }?>>Grafické karty</option>
                 <option value="Smartphóny" <?php if($article->getDivision() == 'Smartphóny') { ?> selected <?php }?>>Smartphóny</option>
                 <option value="Software" <?php if($article->getDivision() == 'Software') { ?> selected <?php }?>>Software</option>
-                <option value="TV" <?php if($article->getDivision() == 'TV') { ?> selected <?php }?>>TV</option>
+                <option value="TV" <?php if($article->getDivision() == 'TV a Monitory') { ?> selected <?php }?>>TV a Monitory</option>
                 <option value="Notebooky" <?php if($article->getDivision() == 'Notebooky') { ?> selected <?php }?>>Notebooky</option>
                 <option value="Iné" <?php if($article->getDivision() == 'Iné') { ?> selected <?php }?>>Iné</option>
             </select>

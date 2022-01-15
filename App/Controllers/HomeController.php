@@ -16,9 +16,23 @@ class HomeController extends AControllerRedirect
     public function index()
     {
         $articles = final_articles::getAll();
-        return $this->html(
-            [ 'articles' => $articles ]
-        );
+
+        if ($this->request()->getValue('division') == null || $this->request()->getValue('division') == 'home' ) {
+            return $this->html(
+                [ 'articles' => $articles ]
+            );
+        } else {
+            $division =  $this->request()->getValue('division');
+            $specificArticles = array();
+            foreach ($articles as $article) {
+                if ($article->getDivision() == $division) {
+                    array_push($specificArticles,$article);
+                }
+            }
+            return $this->html(
+                [ 'articles' => $specificArticles ]
+            );
+        }
     }
 
     public function article()

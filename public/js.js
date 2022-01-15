@@ -37,6 +37,21 @@ function showResult(str) {
     xmlhttp.send();
 }
 
+function showProfiles(str) {
+    if (str.length==0) {
+        document.getElementById("acclivesearch").innerHTML="";
+        return;
+    }
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function() {
+        if (this.readyState==4 && this.status==200) {
+            document.getElementById("acclivesearch").innerHTML=this.responseText;
+        }
+    }
+    xmlhttp.open("GET","?c=acc&a=findAccount&res="+str,true);
+    xmlhttp.send();
+}
+
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     sidenav = 0;

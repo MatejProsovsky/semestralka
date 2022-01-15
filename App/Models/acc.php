@@ -11,12 +11,14 @@ class acc extends Model
     protected ?string $username;
     protected ?string $password;
     protected ?string $email;
+    protected $banned;
 
     public function __construct(?string $username = null, ?string $email = null, ?string $password = null)
     {
         $this->email = $email;
         $this->username = $username;
         $this->password = $password;
+        $banned = 0;
     }
 
     /**
@@ -84,9 +86,25 @@ class acc extends Model
         $this->password = $password;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getBanned()
+    {
+        return $this->banned;
+    }
+
+    /**
+     * @param mixed $banned
+     */
+    public function setBanned($banned): void
+    {
+        $this->banned = $banned;
+    }
+
     static public function setDbColumns()
     {
-        return ['ID', 'username', 'password', 'email'];
+        return ['ID', 'username', 'password', 'email','banned'];
     }
 
     static public function setTableName()

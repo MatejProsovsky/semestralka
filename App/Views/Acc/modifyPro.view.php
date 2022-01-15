@@ -22,10 +22,20 @@ $acc = $data['Acc'];?>
 
 
         <button type="submit" class="btn">Zmeniť profil</button>
-        <a class="text-center" href="?c=acc&a=pass" style="margin-top: 20%; border: 2px solid cyan;left: 1px;position: relative;padding: 7px;font-size: 15px">Zmeniť heslo</a>
-
+        <a class="text-center" href="?c=acc&a=pass" style="margin:10%; border: 2px solid cyan;left: 1px;position: relative;padding: 7px;font-size: 15px">Zmeniť heslo</a>
+        <?php $actualAcc = acc::getOne($_SESSION['id']);
+            if($actualAcc->getUsername() == "admin") {
+                if ($acc->getUsername() != "admin" ) {
+                    if ($acc->getBanned() == 1) { ?>
+                        <a class="text-center" href="?c=acc&a=banAcc&id=<?= $acc->getID()?>" style="margin:10%; border: 2px solid red;left: 1px;position: relative;padding: 7px;font-size: 15px">Odbanovať</a>
+             <?php } else {
+                    ?>
+                        <a class="text-center" href="?c=acc&a=banAcc&id=<?= $acc->getID()?>" style="margin:10%; border: 2px solid red;left: 1px;position: relative;padding: 7px;font-size: 15px">Zabanovať</a>
+            <?php   }
+                }
+            } ?>
     </form>
-    <a href="?c=acc&a=deleteAcc" onclick="return confirm('Si is istý že chceš zmazať účet?')" style="background-color:black;font-size: 14.5px ; color: red; padding: 10px 20px;left: 60px;position: relative;top: 10px">Zmazať účet</a>
+    <a href="?c=acc&a=deleteAcc&id=<?= $acc->getID()?>" onclick="return confirm('Si is istý že chceš zmazať účet?')" style="background-color:black;font-size: 14.5px ; color: red; padding: 10px 20px;left: 60px;position: relative;top: 10px">Zmazať účet</a>
     <script>
 
         document.getElementById("modForm").onsubmit = checkForm;

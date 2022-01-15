@@ -49,7 +49,7 @@
                 <option value="Grafické karty">Grafické karty</option>
                 <option value="Smartphóny">Smartphóny</option>
                 <option value="Software">Software</option>
-                <option value="TV">TV</option>
+                <option value="TV a Monitory">TV a Monitory</option>
                 <option value="Notebooky">Notebooky</option>
                 <option value="Iné">Iné</option>
             </select>

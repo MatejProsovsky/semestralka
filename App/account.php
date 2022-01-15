@@ -9,13 +9,16 @@ class account
     public static function login($username, $password) {
         $accounts=Acc::getAll();
         foreach ($accounts as $acc) {
-            if ($acc->getUsername() == $username )
+            if ($acc->getBanned() == 1) {
+                return 2;
+            }
+            if ($acc->getUsername() == $username)
             {
                 if (password_verify($password, $acc->getPassword())) {
                     $_SESSION['id'] = $acc->getID();
-                    return true;
+                    return 1;
                 } else {
-                    return false;
+                    return 0;
                 }
 
             }

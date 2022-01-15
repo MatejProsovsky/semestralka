@@ -1,3 +1,10 @@
+.accounts {
+    margin: 10px;
+    position: relative;
+    display: block;
+}
+
+
 .sidenav {
     height: 100%;
     width: 0;

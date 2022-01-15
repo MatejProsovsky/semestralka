@@ -15,12 +15,6 @@ use App\Models\acc; ?>
                     </div>
 
                 </a>
-                <?php /*if(isset($_SESSION['id'])) {
-                        $acc = acc::getOne($_SESSION['id']);
-                        if ($acc->getUsername() == 'admin' || $_SESSION['id'] == $article->getUserId()) { ?>
-                            <a href="?c=articles&a=modifyArticle&id=<?= $article->getID() ?>" style="color: orange">Upraviť</a>
-                <?php   }
-                      }*/?>
                 <a href="?c=articles&a=modifyFinalArticle&id=<?= $article->getID() ?>" style="position: relative; left: 15px" >Upraviť</a>
             </article>
         <?php } ?>
