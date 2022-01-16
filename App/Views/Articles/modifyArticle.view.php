@@ -51,12 +51,12 @@ $article = $data['Article'];
             <label style="top: -23px">Sekcia (povinné)</label>
             <select name="division" id="division" style="width: 20vw;background-color: black;color: #cccccc" >
                 <option value="Procesory" <?php if($article->getDivision() == 'Procesory') { ?> selected <?php }?>>Procesory</option>
-                <option value="Matičné dosky" <?php if($article->getDivision() == 'Matičné dosky') { ?> selected <?php }?>>Matičné dosky</option>
+                <option value="Matičnédosky" <?php if($article->getDivision() == 'Matičnédosky') { ?> selected <?php }?>>Matičné dosky</option>
                 <option value="Pamäte" <?php if($article->getDivision() == 'Pamäte') { ?> selected <?php }?>>Pamäte</option>
-                <option value="Grafické karty" <?php if($article->getDivision() == 'Grafické karty') { ?> selected <?php }?>>Grafické karty</option>
+                <option value="Grafickékarty" <?php if($article->getDivision() == 'Grafickékarty') { ?> selected <?php }?>>Grafické karty</option>
                 <option value="Smartphóny" <?php if($article->getDivision() == 'Smartphóny') { ?> selected <?php }?>>Smartphóny</option>
                 <option value="Software" <?php if($article->getDivision() == 'Software') { ?> selected <?php }?>>Software</option>
-                <option value="TV" <?php if($article->getDivision() == 'TV a Monitory') { ?> selected <?php }?>>TV a Monitory</option>
+                <option value="TVaMonitory" <?php if($article->getDivision() == 'TVaMonitory') { ?> selected <?php }?>>TV a Monitory</option>
                 <option value="Notebooky" <?php if($article->getDivision() == 'Notebooky') { ?> selected <?php }?>>Notebooky</option>
                 <option value="Iné" <?php if($article->getDivision() == 'Iné') { ?> selected <?php }?>>Iné</option>
             </select>

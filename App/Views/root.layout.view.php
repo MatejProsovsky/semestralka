@@ -24,12 +24,12 @@
 <div id="mySidenav" class="sidenav">
     <a href="?c=home&division=home">Domov</a>
     <a href="?c=home&division=Procesory">Procesory</a>
-    <a href="?c=home&division=Matičné dosky">Matičné Dosky</a>
+    <a href="?c=home&division=Matičnédosky">Matičné Dosky</a>
     <a href="?c=home&division=Pamäte">Pamäte</a>
-    <a href="?c=home&division=Grafické karty">Grafické Karty</a>
+    <a href="?c=home&division=Grafickékarty">Grafické Karty</a>
     <a href="?c=home&division=Smartphóny">Smartphóny</a>
     <a href="?c=home&division=Software">Software</a>
-    <a href="?c=home&division=TV a Monitory">TV a Monitory</a>
+    <a href="?c=home&division=TVaMonitory">TV a Monitory</a>
     <a href="?c=home&division=Notebooky">Notebooky</a>
     <a href="?c=home&division=Iné">Iné</a>
 
@@ -39,10 +39,10 @@
     <span class = "buttonMenu" style="top:5px" onclick="if (sidenav == 0) {openNav()} else {closeNav()} ">&#9776; TechNews</span>
 
     <div class="dropdown" style="left: 150px;top: 17px;float: left">
-        <a class="dropbtn"><i class='fas fa-search' id="fas"></i></a>
+        <a class="dropbtn"><i class='fas fa-search'></i></a>
         <div class="dropdown-contentsearch" id="search">
-            <form action="" style="position:relative;top: 5px;font-size: 20px" >
-                <input class="inputSearch" style="color: #cccccc;background-color: #111111;box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);font-size: 18px" type="text" on onkeyup="showResult(this.value)">
+            <form style="position:relative;top: 5px;font-size: 20px" >
+                <input class="inputSearch" style="color: #cccccc;background-color: #111111;box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);font-size: 18px" type="text" onkeyup="showResult(this.value)">
             </form>
             <div id="livesearch"></div>
         </div>
@@ -55,7 +55,7 @@
         ?>
         <div class="login" style="background-color:rgba(0, 0, 0, 0.5);">
             <div class="dropdown" style="float:right;">
-                <a class="dropbtn"><i class='fas' id="fas">&#xf406;   <?php echo \App\account::getName()?></i></a>
+                <a class="dropbtn"><i class='fas' id="fas">&#xf406; &nbsp;   <?php echo \App\account::getName()?></i></a>
                 <div class="dropdown-content" >
                     <a href="?c=acc&a=pro">Profil</a>
 
@@ -82,7 +82,7 @@
         ?>
         <div class="login" style="background-color:rgba(0, 0, 0, 0.5);">
             <a href="?c=acc&a=log">
-                <i class='fas' id="fas">&#xf406; </i>Prihlásiť
+                <i class='fas'>&#xf406;&nbsp; </i>Prihlásiť
             </a>
         </div>
         <?php

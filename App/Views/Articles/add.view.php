@@ -44,12 +44,12 @@
             <label style="top: -23px">Sekcia (povinné)</label>
             <select name="division" id="division" style="width: 20vw;background-color: black;color: #cccccc">
                 <option value="Procesory">Procesory</option>
-                <option value="Matičné dosky">Matičné dosky</option>
+                <option value="Matičnédosky">Matičné dosky</option>
                 <option value="Pamäte">Pamäte</option>
-                <option value="Grafické karty">Grafické karty</option>
+                <option value="Grafickékarty">Grafické karty</option>
                 <option value="Smartphóny">Smartphóny</option>
                 <option value="Software">Software</option>
-                <option value="TV a Monitory">TV a Monitory</option>
+                <option value="TVaMonitory">TV a Monitory</option>
                 <option value="Notebooky">Notebooky</option>
                 <option value="Iné">Iné</option>
             </select>
