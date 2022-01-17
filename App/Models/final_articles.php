@@ -19,6 +19,9 @@ class final_articles extends Model
     protected ?string $section_5;
     protected ?string $source;
     protected ?string $division;
+    protected $ID_article;
+
+
 
     /**
      * @param $ID_user
@@ -32,7 +35,7 @@ class final_articles extends Model
      * @param string|null $section_5
      * @param string|null $source
      */
-    public function __construct($ID_user= null, ?string $title = null,?string $summary= null,?string $section_1= null,  ?string $source= null, ?string $image= null, ?string $section_2 = null, ?string $section_3 = null, ?string $section_4 = null, ?string $section_5 = null,?string $division = null)
+    public function __construct($ID_user= null, ?string $title = null,?string $summary= null,?string $section_1= null,  ?string $source= null, ?string $image= null, ?string $section_2 = null, ?string $section_3 = null, ?string $section_4 = null, ?string $section_5 = null,?string $division = null,$ID_article= null)
     {
         $this->ID_user = $ID_user;
         $this->title = $title;
@@ -45,6 +48,23 @@ class final_articles extends Model
         $this->section_5 = $section_5;
         $this->source = $source;
         $this->division = $division;
+        $this->ID_article = $ID_article;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getIDArticle()
+    {
+        return $this->ID_article;
+    }
+
+    /**
+     * @param mixed|null $ID_article
+     */
+    public function setIDArticle($ID_article): void
+    {
+        $this->ID_article = $ID_article;
     }
     /**
      * @return mixed
@@ -237,10 +257,21 @@ class final_articles extends Model
         $this->ID = $ID;
     }
 
+    static public function deleteFinalArticle($id) {
+        $comments = comment::getAll();
+        foreach ($comments as $comment) {
+            if ($comment->getIDFinalArticle() == $id) {
+                $comment->delete();
+            }
+        }
+        $article = final_articles::getOne($id);
+        $article->delete();
+    }
+
     static public function setDbColumns()
     {
         return ['ID','ID_user', 'title', 'image', 'summary','section_1','section_2',
-            'section_3','section_4','section_5','source','division'];
+            'section_3','section_4','section_5','source','division','ID_article'];
     }
 
     static public function setTableName()

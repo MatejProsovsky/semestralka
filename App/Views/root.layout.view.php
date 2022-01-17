@@ -72,7 +72,7 @@
                     <?php
                     }
                     ?>
-                    <a href="?c=acc&a=logout">Odhlásiť</a>
+                    <a href="?c=acc&a=logout">⤶ Odhlásiť</a>
                 </div>
             </div>
 

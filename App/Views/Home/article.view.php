@@ -25,7 +25,7 @@ $comm = $data['comment'];
             <?php
             if(isset($_SESSION['id'])) {
                 $acc = acc::getOne($_SESSION['id']);
-                if ($acc->getUsername() == 'admin' || $_SESSION['id'] == $article->getIDUser()) { ?>
+                if ($acc->getUsername() == 'admin') { ?>
                     <a href="?c=articles&a=modifyFinalArticle&id=<?= $article->getID() ?>" style="position: relative;top: -5px;font-size: 18px; outline: 4px inset orange;outline-offset: 2px;">Upraviť</a>
                 <?php   }
             }?>

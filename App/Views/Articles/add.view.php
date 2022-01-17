@@ -13,27 +13,27 @@
             <label>Obrázok</label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  required name="summary"></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  required name="summary"></textarea>
             <label style="top: -23px">Úvodný text (povinné)</label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  required name="section_1"></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  required name="section_1"></textarea>
             <label style="top: -23px">1. odsek (povinné)</label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_2"></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_2"></textarea>
             <label style="top: -23px">2. odsek </label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_3"></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_3"></textarea>
             <label style="top: -23px">3. odsek </label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_4"></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_4"></textarea>
             <label style="top: -23px">4. odsek </label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_5"></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_5"></textarea>
             <label style="top: -23px">5. odsek </label>
         </div>
         <div class="input-container">
@@ -64,7 +64,7 @@
         <?php
         } else {
             ?>
-            <html> <p><br/ ></p> </html>
+            <p><br/></p>
             <?php
         }
         ?>

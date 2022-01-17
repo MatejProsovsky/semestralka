@@ -1,14 +1,20 @@
 <?php /** @var Array $data */
 /** @var \App\Models\articles $article */
 
-use App\Models\articles;
+use App\Models\acc;
 $article = $data['Article'];
 ?>
 
 <div class="box" style="top: 650px;width: 50vw;z-index: 0" >
 
-    <a href="?c=home&a=myArticle&id=<?= $article->getID() ?>" style="background-color:black;font-size: 18px ;left: 1px;position: relative;top: -10px">Spať na článok</a>
-
+    <?php if(isset($_SESSION['id'])) {
+            $acc = acc::getOne($_SESSION['id']);
+            if($acc->getUsername() == "admin") { ?>
+                <a href="?c=articles&a=myArticles" style="background-color:black;font-size: 18px ;left: 1px;position: relative;top: -10px">&#8630;  Spať na všetky články</a>
+    <?php   } else {?>
+                <a href="?c=articles&a=myArticles" style="background-color:black;font-size: 18px ;left: 1px;position: relative;top: -10px">&#8630;  Spať na moje články</a>
+    <?php }
+    } ?>
     <form method="post" action="?c=articles&a=modifyArticle&id=<?= $article->getID() ?>" id="regForm">
         <div class="prof" id="errors" style="color: goldenrod"></div>
         <div class="input-container">
@@ -20,27 +26,27 @@ $article = $data['Article'];
             <label>Obrázok</label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  required name="summary" ><?=$article->getSummary()?></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  required name="summary" ><?=$article->getSummary()?></textarea>
             <label style="top: -23px">Úvodný text (povinné)</label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  required name="section_1" ><?=$article->getSection1()?></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  required name="section_1" ><?=$article->getSection1()?></textarea>
             <label style="top: -23px">1. odsek (povinné)</label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_2" ><?=$article->getSection2()?></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_2" ><?=$article->getSection2()?></textarea>
             <label style="top: -23px">2. odsek </label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_3" ><?=$article->getSection3()?></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_3" ><?=$article->getSection3()?></textarea>
             <label style="top: -23px">3. odsek </label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_4"> <?=$article->getSection4()?></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_4"> <?=$article->getSection4()?></textarea>
             <label style="top: -23px">4. odsek </label>
         </div>
         <div class="input-container" style="top: 10px">
-            <textarea type="textarea" style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_5"><?=$article->getSection5()?></textarea>
+            <textarea style="background-color: black; color: #cccccc;width: 48vw;align-content: center" rows="5"  name="section_5"><?=$article->getSection5()?></textarea>
             <label style="top: -23px">5. odsek </label>
         </div>
         <div class="input-container">

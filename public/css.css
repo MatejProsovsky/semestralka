@@ -47,7 +47,6 @@
 .dropbtn {
     background-color: black;
     color: cyan;
-    padding-right: -50px;
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -74,7 +73,6 @@
     right: 0;
     background-color: #111111;
     min-width: 80px;
-    box-shadow: rgba(0,0,0,1);
     z-index: 1;
     width: auto;
     left: 155px;
@@ -233,7 +231,7 @@
     left:0px;
     font-size:18px;
     color:#c5c6c7;
-    pointer-event:none;
+    pointer-events:none;
     transition: all 0.5s ease-in-out;
 }
 .input-container input{

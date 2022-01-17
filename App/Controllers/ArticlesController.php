@@ -22,22 +22,7 @@ class ArticlesController extends AControllerRedirect
     public function modifyArticle() {
 
         $article = articles::getOne($this->request()->getValue('id'));
-        $final_articles = final_articles::getAll();
-        foreach ($final_articles as $final) {
-            if ($final->getTitle() == $article->getTitle() && isset($_POST['title'])) {
-                $final->setTitle($_POST['title']);
-                $final->setSummary($_POST['summary']);
-                $final->setSection1($_POST['section_1']);
-                $final->setSection2($_POST['section_2']);
-                $final->setSection3($_POST['section_3']);
-                $final->setSection4($_POST['section_4']);
-                $final->setSection5($_POST['section_5']);
-                $final->setSource($_POST['source']);
-                $final->setImage($_POST['image']);
-                $final->setDivision($_POST['division']);
-                $final->save();
-            }
-        }
+
         if (isset($_POST['title'])){
             $article->setTitle($_POST['title']);
             $article->setSummary($_POST['summary']);
@@ -49,9 +34,9 @@ class ArticlesController extends AControllerRedirect
             $article->setSource($_POST['source']);
             $article->setImage($_POST['image']);
             $article->setDivision($_POST['division']);
+            $article->setIsPublished(0);
             $article->save();
         }
-
 
         return $this->html([
             'Article' => $article
@@ -83,20 +68,20 @@ class ArticlesController extends AControllerRedirect
 
     public function deleteArticle(){
         $article = articles::getOne($this->request()->getValue('id'));
+        $finalArticles = final_articles::getAll();
+        foreach ($finalArticles as $art) {
+            if ($art->getIDArticle() == $article->getID()) {
+                final_articles::deleteFinalArticle($art->getID());
+                break;
+            }
+        }
         $article->delete();
         $this->redirect('articles','myArticles');
 
     }
 
     public function deleteFinalArticle(){
-        $comments = comment::getAll();
-        foreach ($comments as $comment) {
-            if ($comment->getIDFinalArticle() == $this->request()->getValue('id')) {
-                $comment->delete();
-            }
-        }
-        $article = final_articles::getOne($this->request()->getValue('id'));
-        $article->delete();
+        final_articles::deleteFinalArticle($this->request()->getValue('id'));
         $this->redirect('home');
 
     }
@@ -104,25 +89,43 @@ class ArticlesController extends AControllerRedirect
     public function publish() {
         $article = articles::getOne($this->request()->getValue('id'));
         $finalArticles = final_articles::getAll();
-        $publish = true;
+        $notInFinal = true;
         foreach($finalArticles as $art) {
-            if ($article->getTitle() == $art->getTitle()) {
-                $this->redirect('articles','myArticles',['error' => 'Článok už je publikovaný.']);
-                $publish = false;
+            if ($article->getID() == $art->getIDArticle()) {
+                $notInFinal = false;
+                if($article->getIsPublished() == 1) {
+                    $article->setIsPublished(0);
+                    $article->save();
+                    final_articles::deleteFinalArticle($art->getID());
+                    $this->redirect('articles','myArticles');
+                }
+                if($article->getIsPublished() == 0)  {
+                    $art->setTitle($article->getTitle());
+                    $art->setSummary($article->getSummary());
+                    $art->setSection1($article->getSection1());
+                    $art->setSection2($article->getSection2());
+                    $art->setSection3($article->getSection3());
+                    $art->setSection4($article->getSection4());
+                    $art->setSection5($article->getSection5());
+                    $art->setSource($article->getSource());
+                    $art->setImage($article->getImage());
+                    $art->setDivision($article->getDivision());
+                    $art->setIDArticle($article->getID());
+                    $art->save();
+                    $this->redirect('articles','myArticles');
+                }
             }
         }
 
-        if ($publish){
+        if ($notInFinal){
             $finalArticle = new final_articles($article->getIDUser(), $article->getTitle(),$article->getSummary(), $article->getSection1(), $article->getSource(),
-                $article->getImage(), $article->getSection2() ,$article->getSection3(),$article->getSection4(),$article->getSection5() ,$article->getDivision());
+                $article->getImage(), $article->getSection2() ,$article->getSection3(),$article->getSection4(),$article->getSection5() ,$article->getDivision(), $article->getID());
             $article->setIsPublished(1);
             $article->save();
             $finalArticle->save();
-
         }
 
         $this->redirect('articles','myArticles');
-
     }
 
     public function add() {

@@ -43,6 +43,7 @@ class articles extends final_articles
 
 
 
+
     static public function setDbColumns()
     {
         return ['ID','ID_user', 'title', 'image', 'summary','section_1','section_2',

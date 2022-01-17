@@ -30,7 +30,7 @@
         <?php
         } else {
             ?>
-            <html> <p><br/ ></p> </html>
+            <p><br/></p>
             <?php
         }
         ?>

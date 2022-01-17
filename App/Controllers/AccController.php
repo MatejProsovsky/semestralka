@@ -77,7 +77,6 @@ class AccController extends AControllerRedirect
             $acc->setUsername($_POST['username']);
             $acc->setEmail($_POST['email']);
             $acc->save();
-
         }
 
         return $this->html([
@@ -159,9 +158,12 @@ class AccController extends AControllerRedirect
             foreach ($accounts as $account) {
                 if (stristr($account->getUsername(), $wanted)) {
                     if ($account->getBanned() == 1) {
-                        $hint=$hint . "<a href=?c=acc&a=modifyPro&id=" .  $account->getID() . "' target='_blank' class='accounts'>". "Užvateľské meno : " . $account->getUsername() . "&nbsp;&nbsp;&nbsp;&nbsp;" . "email : " . $account->getEmail() ."&nbsp;&nbsp;&nbsp;&nbsp;".  "<span style='color: red'>Účet zabanovaný</span>" ."</a>";
+                        $hint=$hint . "<a href='?c=acc&a=modifyPro&id=" .  $account->getID() .
+                            "' target='_blank' class='accounts'>". "Užvateľské meno : " . $account->getUsername() . "&nbsp;&nbsp;&nbsp;&nbsp;" . "email : " .
+                            $account->getEmail() ."&nbsp;&nbsp;&nbsp;&nbsp;".  "<span style='color: red'>Účet zabanovaný</span>" ."</a>";
                     } else {
-                        $hint = $hint . "<a href=?c=acc&a=modifyPro&id=" . $account->getID() . "' target='_blank' class='accounts' >" . "Užvateľské meno : " . $account->getUsername() . "&nbsp;&nbsp;&nbsp;&nbsp;" . "email : " . $account->getEmail() . "</a>";
+                        $hint = $hint . "<a href='?c=acc&a=modifyPro&id=" . $account->getID() . "' target='_blank' class='accounts' >" .
+                            "Užvateľské meno : " . $account->getUsername() . "&nbsp;&nbsp;&nbsp;&nbsp;" . "email : " . $account->getEmail() . "</a>";
                     }
                 }
             }
@@ -170,9 +172,11 @@ class AccController extends AControllerRedirect
             $hint="<p>Užívaťeľské účty :</p>";
             foreach ($accounts as $account) {
                 if($account->getBanned() == 1) {
-                    $hint=$hint . "<a href=?c=acc&a=modifyPro&id=" .  $account->getID() . "' target='_blank' class='accounts'>". "Užvateľské meno : " . $account->getUsername() . "&nbsp;&nbsp;&nbsp;&nbsp;" . "email : " . $account->getEmail() ."&nbsp;&nbsp;&nbsp;&nbsp;".  "<span style='color: red'>Účet zabanovaný</span>" ."</a>";
+                    $hint=$hint . "<a href='?c=acc&a=modifyPro&id=" .  $account->getID() . "' target='_blank' class='accounts'>".
+                        "Užvateľské meno : " . $account->getUsername() . "&nbsp;&nbsp;&nbsp;&nbsp;" . "email : " . $account->getEmail() ."&nbsp;&nbsp;&nbsp;&nbsp;".  "<span style='color: red'>Účet zabanovaný</span>" ."</a>";
                 } else {
-                    $hint = $hint . "<a href=?c=acc&a=modifyPro&id=" . $account->getID() . "' target='_blank' class='accounts' >" . "Užvateľské meno : " . $account->getUsername() . "&nbsp;&nbsp;&nbsp;&nbsp;" . "email : " . $account->getEmail() . "</a>";
+                    $hint = $hint . "<a href='?c=acc&a=modifyPro&id=" . $account->getID() . "' target='_blank' class='accounts' >" .
+                        "Užvateľské meno : " . $account->getUsername() . "&nbsp;&nbsp;&nbsp;&nbsp;" . "email : " . $account->getEmail() . "</a>";
                 }
             }
         }
